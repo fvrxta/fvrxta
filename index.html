@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fvrxta hates whores</title>
     <style>
-        /* Сбрасываем стандартные отступы */
+
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +32,7 @@
             object-fit: cover;
         }
         
-        /* Стили для основного контента */
+
         .content {
             flex: 1;
             padding: 20px;
@@ -40,7 +40,7 @@
             text-align: center;
         }
         
-        /* Стили для footer */
+
         footer {
             background-color: #333;
             color: white;
@@ -48,7 +48,7 @@
             text-align: center;
         }
         
-        /* Стили для кнопки-фотографии */
+
         .image-button-container {
             margin: 30px 0;
         }
@@ -88,6 +88,28 @@
             padding: 10px 20px;
             border-radius: 5px;
         }
+
+        .counter {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .counter h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        #soulCounter {
+            font-size: 2em;
+            color: gold;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -105,14 +127,51 @@
         
         <!-- Кнопка-фотография -->
         <div class="image-button-container">
-            <a href="https://t.me/fvrxta/3" class="image-button">
+            <a href="https://t.me/fvrxta/3" class="image-button" onclick="incrementCounter()">
                 <img src="https://i.ibb.co/jPsCXPYp/aaa.png" alt="продать душу" class="button-image">
                 <span class="button-text">Продать душу</span>
             </a>
         </div>
+
+        <div class="counter">
+            <h3>Уже продано душ:</h3>
+            <span id="soulCounter">0</span>
+        </div>
+
     </main>
     
     <footer>
     </footer>
+
+    <script>
+
+        let count = localStorage.getItem('soulCount') || 0;
+        document.getElementById('soulCounter').textContent = count;
+        
+        function incrementCounter() {
+            count++;
+
+            localStorage.setItem('soulCount', count);
+            document.getElementById('soulCounter').textContent = count;
+            
+
+            const messages = [
+                'прими свою судьбу',
+                '+@#$%^ эло к твоему аккаунту',
+                'fvrxta уже получил твою душу',
+                'твоя душа была отправлена',
+                'транзакция одобрена Сатаной',
+                'ожидайте винстрика',
+                'было вкусно'
+            ];
+            
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+            
+
+            if (navigator.vibrate) {
+                navigator.vibrate([100, 50, 100]);
+            }
+        }
+    </script>
 </body>
 </html>
